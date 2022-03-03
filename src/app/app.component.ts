@@ -7,6 +7,9 @@ import { Component, VERSION } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
+
+  items:any = [];
+
   name = 'Angular ' + VERSION.major;
   url = "https://cors-anywhere.herokuapp.com/https://api.igdb.com/v4/games/";
   //header = new HttpHeaders({'Client-ID': '56pmsmf23lb6a8rn0z6t8vvg47r0a2' , 'Authorization': "Bearer ud22j0xr53lb06mep6au7m8mxcogx3"});
