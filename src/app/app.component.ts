@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, VERSION } from '@angular/core';
+import { Game } from './game';
 
 @Component({
   selector: 'my-app',
@@ -8,7 +9,7 @@ import { Component, VERSION } from '@angular/core';
 })
 export class AppComponent  {
 
-  items:any = [];
+  items:Game[] = [];
 
   name = 'Angular ' + VERSION.major;
   url = "https://cors-anywhere.herokuapp.com/https://api.igdb.com/v4/games/";
@@ -16,10 +17,10 @@ export class AppComponent  {
   header = new HttpHeaders()
   .set('Client-ID','56pmsmf23lb6a8rn0z6t8vvg47r0a2')
   .set('Authorization', "Bearer ud22j0xr53lb06mep6au7m8mxcogx3")
-  params = new HttpParams().set("fields", "*").set("search", "Halo");
+  params = new HttpParams().set("fields", "name").set("search", "Halo");
 
   constructor(private http: HttpClient) {
-    this.http.get(this.url, {headers :this.header, params: this.params}).subscribe(data => console.log(data));
+    this.http.get(this.url, {headers :this.header, params: this.params}).subscribe(data => this.items.push(data));
   }
 
   ngOnInit() {
