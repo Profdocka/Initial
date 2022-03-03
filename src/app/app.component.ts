@@ -13,7 +13,7 @@ export class AppComponent  {
   header = new HttpHeaders()
   .set('Client-ID','56pmsmf23lb6a8rn0z6t8vvg47r0a2')
   .set('Authorization', "Bearer ud22j0xr53lb06mep6au7m8mxcogx3")
-  params = new HttpParams()
+  params = new HttpParams().set("fields", "*").set("search", "Valorant");
 
   constructor(private http: HttpClient) {
     this.http.get(this.url, {headers :this.header, params: this.params}).subscribe(data => console.log(data));
